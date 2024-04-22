@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEngine.UI;
 
 namespace GenshintImpact2
 {
@@ -14,6 +15,8 @@ namespace GenshintImpact2
         public GameObject pausePanel;
 
         public GameObject diePanel;
+
+        public GameObject healthBar;
         public AnimationClip deadClip;
 
         public static UIManager instance;
@@ -53,6 +56,10 @@ namespace GenshintImpact2
             input.playerActions.TogglePauseMenu.started += Pause;
 
             input.playerActions.Interact.started += Interact;
+
+            input.playerActions.RestoreHealth.started += RestoreHealthBar;
+
+            input.playerActions.DecreaseHealth.started += UpdateHealthBar;
         }
 
         protected void RemoveInputActionsCallbacks()
@@ -62,6 +69,10 @@ namespace GenshintImpact2
             input.playerActions.TogglePauseMenu.started -= Pause;
 
             input.playerActions.Interact.started -= Interact;
+
+            input.playerActions.RestoreHealth.started -= RestoreHealthBar;
+
+            input.playerActions.DecreaseHealth.started -= UpdateHealthBar;
         }
 
         private void OnInventoryToggle(UnityEngine.InputSystem.InputAction.CallbackContext context)
@@ -114,6 +125,30 @@ namespace GenshintImpact2
         public void CallInteraction()
         {
             DataManager.instance.SaveData();
+        }
+
+        // Player HealthBar
+        public void RestoreHealthBar(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            healthBar.GetComponent<Slider>().value = 1;
+        }
+
+        // Debug Tool
+        public void UpdateHealthBar(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            healthBar.GetComponent<Slider>().value -= 0.3f;
+        }
+
+        // Update for Player
+        public void UpdateHealthBar(float updateValue)
+        {
+            healthBar.GetComponent<Slider>().value += updateValue;
+        }
+
+        // Update for Enemies
+        public void UpdateHealthBar(Slider enemyHealth, float updateValue)
+        {
+            enemyHealth.value += updateValue;
         }
     }
 }
