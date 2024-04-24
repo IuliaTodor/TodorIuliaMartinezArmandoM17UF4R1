@@ -1,57 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.AI;
+using UnityEngine.AI;
 
 namespace GenshintImpact2
 {
     public class EnemyMovementState : IState
     {
-        public void Enter()
+        protected EnemyMovementSM stateMachine;
+
+        protected NavMeshAgent agent;
+
+        public EnemyMovementState(EnemyMovementSM enemyMovementSM)
+        {
+            stateMachine = enemyMovementSM;
+        }
+
+        public virtual void Enter()
         {
             
         }
 
-        public void Exit()
+        public virtual void Exit()
         {
 
         }
 
-        public void HandleInput()
+        public virtual void HandleInput()
         {
 
         }
 
-        public void OnAnimationEnterEvent()
+        public virtual void OnAnimationEnterEvent()
         {
 
         }
 
-        public void OnAnimationExitEvent()
+        public virtual void OnAnimationExitEvent()
         { 
 
         }
 
-        public void OnAnimationTransitionEvent()
+        public virtual void OnAnimationTransitionEvent()
         {
 
         }
 
-        public void OnTriggerEnter(Collider collider)
+        public virtual void OnTriggerEnter(Collider collider)
         {
 
         }
 
-        public void OnTriggerExit(Collider collider)
+        public virtual void OnTriggerExit(Collider collider)
         {
 
         }
 
-        public void PhysicsUpdate()
+        public virtual void PhysicsUpdate()
         {
 
         }
 
-        public void Update()
+        public virtual void Update()
         {
 
         }

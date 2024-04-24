@@ -2,28 +2,26 @@ using GenshintImpact2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GenshintImpact2
 {
-    public class EnemyFollowState : MonoBehaviour
+    public class EnemyFollowState : EnemyMovementState
     {
-    private EnemyMovementSM enemyMovementSM;
 
-    public EnemyFollowState(EnemyMovementSM enemyMovementSM)
-    {
-        this.enemyMovementSM = enemyMovementSM;
-    }
-
-    // Start is called before the first frame update
-    void Start()
+        public EnemyFollowState(EnemyMovementSM enemyMovementSM) : base(enemyMovementSM)
         {
-        
+
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void Enter()
         {
-        
+            base.Enter();
+        }
+
+        public override void Update()
+        {
+            stateMachine.enemy.agent.destination = stateMachine.enemy.movePosition.position;
         }
     }
 }
