@@ -9,7 +9,7 @@ namespace GenshintImpact2
     {
         private EnemyMovementSM enemyMovementSM;
 
-        public EnemyAttackState(EnemyMovementSM enemyMovementSM)
+        public EnemyAttackState(EnemyMovementSM enemyMovementSM) : base(enemyMovementSM)
         {
             this.enemyMovementSM = enemyMovementSM;
         }

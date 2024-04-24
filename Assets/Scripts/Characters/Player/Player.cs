@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GenshintImpact2
 {
@@ -16,6 +17,8 @@ namespace GenshintImpact2
         public Animator animator { get; private set; }
         //La camara principal, no el cinemachine. Porque Cinemachine controla la c�mara principal
         public Transform cameraTransform { get; private set; }
+
+      
 
         public PlayerInput input { get; private set; }
         private PlayerMovementSM movementStateMachine;
@@ -50,7 +53,7 @@ namespace GenshintImpact2
             DataManager.instance.LoadData();
 
             weaponShootPosition = GetWeapon();
-            Debug.Log(weaponShootPosition.transform.position);
+
 
         }
 

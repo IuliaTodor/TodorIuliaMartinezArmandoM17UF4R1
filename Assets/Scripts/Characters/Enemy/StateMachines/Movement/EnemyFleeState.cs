@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace GenshintImpact2
 {
-    public class EnemyFleeState : MonoBehaviour
+    public class EnemyFleeState : EnemyMovementState
     {
     private EnemyMovementSM enemyMovementSM;
 
-    public EnemyFleeState(EnemyMovementSM enemyMovementSM)
+    public EnemyFleeState(EnemyMovementSM enemyMovementSM) : base(enemyMovementSM)
     {
         this.enemyMovementSM = enemyMovementSM;
     }
