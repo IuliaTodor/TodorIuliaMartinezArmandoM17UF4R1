@@ -33,7 +33,7 @@ namespace GenshintImpact2
         //Virtual permite cambiar lo que suceda dentro de la función
         public virtual void Enter()
         {
-            Debug.Log("State: " + GetType().Name);
+            //Debug.Log("State: " + GetType().Name);
 
             AddInputActionsCallbacks();
 

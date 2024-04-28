@@ -97,7 +97,7 @@ namespace GenshintImpact2
             CameraSwitch.Register(thirdPersonCam);
             CameraSwitch.Register(firstPersonCam);
             CameraSwitch.SwitchCamera(thirdPersonCam);
-            Debug.Log("ActiveCamera" + CameraSwitch.activeCamera);
+            //Debug.Log("ActiveCamera" + CameraSwitch.activeCamera);
         }
 
         private void OnDisable()
