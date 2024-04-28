@@ -21,9 +21,14 @@ namespace GenshintImpact2
 
         public GameObject HealthBar;
 
+        [SerializeField] public FieldOfView fieldOfView;
+        [SerializeField] public Transform target;
+
         public float maxHealth;
 
         public float health;
+
+        public Vector3 destination;
 
         /// <summary>
         /// Centro de la zona de patrulla
@@ -34,15 +39,14 @@ namespace GenshintImpact2
         public GameObject sphere;
         public GameObject cilinder;
 
-
-
-
         private void Awake()
         {
             instance = this;
             enemyStateMachine = new EnemyMovementSM(this);
             rb = GetComponent<Rigidbody>();
             agent = GetComponent<NavMeshAgent>();
+
+            destination = Vector3.zero;
 
         }
 
@@ -55,6 +59,10 @@ namespace GenshintImpact2
         {
             enemyStateMachine.HandleInput();
             enemyStateMachine.Update();
+
+            fieldOfView.SetOrigin(transform.position);
+            fieldOfView.SetDirection(transform.forward);
+
         }
         private void FixedUpdate()
         {

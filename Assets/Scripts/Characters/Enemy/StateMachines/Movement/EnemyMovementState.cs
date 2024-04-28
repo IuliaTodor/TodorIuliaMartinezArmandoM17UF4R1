@@ -10,8 +10,6 @@ namespace GenshintImpact2
     {
         protected EnemyMovementSM stateMachine;
 
-        protected NavMeshAgent agent;
-
         public EnemyMovementState(EnemyMovementSM enemyMovementSM)
         {
             stateMachine = enemyMovementSM;
@@ -19,7 +17,7 @@ namespace GenshintImpact2
 
         public virtual void Enter()
         {
-            
+            Debug.Log("State: " + GetType().Name);
         }
 
         public virtual void Exit()
@@ -65,6 +63,21 @@ namespace GenshintImpact2
         public virtual void Update()
         {
 
+        }
+
+        public virtual void OnFieldViewEnter()
+        {
+            stateMachine.ChangeState(stateMachine.followState);
+        }
+
+        public virtual void OnFieldViewExit()
+        {
+            stateMachine.ChangeState(stateMachine.patrolState);
+        }
+
+        public virtual void OnSetDestination()
+        {
+            
         }
     }
 }
