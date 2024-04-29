@@ -27,7 +27,6 @@ namespace GenshintImpact2
             transform.SetParent(playerArm);
             transform.SetParent(playerArm, false);
             transform.position = playerArm.transform.position;
-            Debug.Log(transform.position);
         }
     }
 }

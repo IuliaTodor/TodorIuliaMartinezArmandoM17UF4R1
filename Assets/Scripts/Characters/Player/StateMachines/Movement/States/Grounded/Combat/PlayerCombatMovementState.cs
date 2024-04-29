@@ -76,7 +76,7 @@ namespace GenshintImpact2
                 Debug.Log(InventoryUI.instance.hasWeapon);
                 return;
             }
-
+            
             stateMachine.player.InstantiateShoot();
         }
     }

@@ -30,6 +30,7 @@ namespace GenshintImpact2
 
         [SerializeField] public GameObject CDInstance;
         [SerializeField] public GameObject weaponShootPosition;
+        [SerializeField] float bulletSpeed;
 
         // Health
         [SerializeField] public float health;
@@ -152,6 +153,7 @@ namespace GenshintImpact2
             }
 
             Instantiate(CDInstance, weaponShootPosition.transform.position, Quaternion.identity);
+            CDInstance.GetComponent<Rigidbody>().velocity = weaponShootPosition.transform.forward * -bulletSpeed;
 
 
         }
