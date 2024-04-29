@@ -13,7 +13,7 @@ namespace GenshintImpact2
         public static Enemy instance;
 
         public Rigidbody rb { get; private set; }
-        public Animator animator { get; private set; }
+        public Animator animator;
 
         public NavMeshAgent agent;
 
@@ -39,6 +39,9 @@ namespace GenshintImpact2
         public GameObject sphere;
         public GameObject cilinder;
 
+        // enemy attack
+        public EnemyAttack hitBox;
+
         private void Awake()
         {
             instance = this;
@@ -63,6 +66,12 @@ namespace GenshintImpact2
             fieldOfView.SetOrigin(transform.position);
             fieldOfView.SetDirection(transform.forward);
 
+            if (hitBox.inAttackRange) {
+                enemyStateMachine.ChangeState(enemyStateMachine.attackState);
+                // Mover a la enemyStateMachine
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) animator.SetTrigger("Attack");
+
+            }
         }
         private void FixedUpdate()
         {
@@ -106,6 +115,13 @@ namespace GenshintImpact2
                     health = 0;
                     // Death
                 }
+            }
+        }
+
+        public void HandleAttack()
+        {
+            if (hitBox.target != null) {
+                hitBox.target.GetComponent<Player>().HandleDamage(2);
             }
         }
 
