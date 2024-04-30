@@ -7,11 +7,10 @@ namespace GenshintImpact2
 {
     public class EnemyAttackState : EnemyMovementState
     {
-        private EnemyMovementSM enemyMovementSM;
+
 
         public EnemyAttackState(EnemyMovementSM enemyMovementSM) : base(enemyMovementSM)
         {
-            this.enemyMovementSM = enemyMovementSM;
         }
 
 
@@ -27,5 +26,14 @@ namespace GenshintImpact2
         {
 
         }
+
+        // public override void OnAnimationTransitionEvent()
+        // {
+        //     base.OnAnimationTransitionEvent();
+        //     Debug.Log("STATE MACHINE: " + stateMachine);
+        //     Debug.Log("aigrjiorejerig");
+
+        //     // animator.gameObject.transform.parent.GetComponent<Enemy>().HandleAttack();
+        // }
     }
 }
