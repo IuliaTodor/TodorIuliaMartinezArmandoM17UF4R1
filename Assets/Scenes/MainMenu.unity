@@ -986,7 +986,7 @@ MonoBehaviour:
   sounds:
   - name: MainMenu
     clip: {fileID: 8300000, guid: 20fa87ed923504f4e80750a1b9ea8c09, type: 3}
-    volume: 0
+    volume: 0.119
     pitch: 1
     source: {fileID: 0}
     loop: 1
@@ -1004,7 +1004,7 @@ MonoBehaviour:
     loop: 1
   - name: Main
     clip: {fileID: 8300000, guid: 6ba02c4a84ced5d42bba64229da4a48f, type: 3}
-    volume: 0
+    volume: 0.104
     pitch: 1
     source: {fileID: 0}
     loop: 1
