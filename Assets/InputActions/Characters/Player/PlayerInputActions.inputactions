@@ -105,7 +105,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KillCharacter",
+                    "name": "DamageEnemy",
                     "type": "Button",
                     "id": "8a3b4467-2e61-4954-bd5d-709d08b220d8",
                     "expectedControlType": "Button",
@@ -117,6 +117,24 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "666ffdf3-a90d-478d-a2d4-2a791619b1c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RestoreHealth",
+                    "type": "Button",
+                    "id": "86ea6668-2e01-425c-9463-c4aae2593508",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DecreaseHealth",
+                    "type": "Button",
+                    "id": "6f8303ce-92b0-4d1d-8f81-be7280295f7e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -318,7 +336,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KillCharacter",
+                    "action": "DamageEnemy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -330,6 +348,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f433fbf2-f2a1-498d-b16b-52d06f62125f",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestoreHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ba643d2-e99d-4a6b-b32d-7964380581dd",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseHealth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

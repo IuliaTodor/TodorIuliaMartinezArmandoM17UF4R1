@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace GenshintImpact2
 {
-    //Cada vez que se añada el componente Player, se añadirá PlayerInput
+    //Cada vez que se aï¿½ada el componente Player, se aï¿½adirï¿½ PlayerInput
     [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
@@ -16,8 +15,10 @@ namespace GenshintImpact2
         [SerializeField] public PlayerAnimationData animationData;
         public Rigidbody rb { get; private set; }
         public Animator animator { get; private set; }
-        //La camara principal, no el cinemachine. Porque Cinemachine controla la cámara principal
+        //La camara principal, no el cinemachine. Porque Cinemachine controla la cï¿½mara principal
         public Transform cameraTransform { get; private set; }
+
+      
 
         public PlayerInput input { get; private set; }
         private PlayerMovementSM movementStateMachine;
@@ -29,13 +30,19 @@ namespace GenshintImpact2
 
         [SerializeField] public GameObject CDInstance;
         [SerializeField] public GameObject weaponShootPosition;
+        [SerializeField] float bulletSpeed;
 
+        // Health
+        [SerializeField] public float health;
+        [SerializeField] public float maxHealth;
+
+        [SerializeField] public GameObject target;
 
         private void Awake()
         {
             instance = this;
             Time.timeScale = 1f;
-            //this representa la clase del player, la cual está en el constructor de PlayerMovementSM
+            //this representa la clase del player, la cual estï¿½ en el constructor de PlayerMovementSM
             movementStateMachine = new PlayerMovementSM(this);
             input = GetComponent<PlayerInput>();
             rb = GetComponent<Rigidbody>();
@@ -49,7 +56,10 @@ namespace GenshintImpact2
             DataManager.instance.LoadData();
 
             weaponShootPosition = GetWeapon();
-            Debug.Log(weaponShootPosition.transform.position);
+
+            health = maxHealth;
+
+            //target = GetComponent<Enemy>().gameObject;
 
         }
 
@@ -63,7 +73,7 @@ namespace GenshintImpact2
 
         private void Start()
         {
-            //Cuando empieza el juego está en idle
+            //Cuando empieza el juego estï¿½ en idle
             movementStateMachine.ChangeState(movementStateMachine.idlingState);
         }
 
@@ -93,7 +103,7 @@ namespace GenshintImpact2
             CameraSwitch.Register(thirdPersonCam);
             CameraSwitch.Register(firstPersonCam);
             CameraSwitch.SwitchCamera(thirdPersonCam);
-            Debug.Log("ActiveCamera" + CameraSwitch.activeCamera);
+            //Debug.Log("ActiveCamera" + CameraSwitch.activeCamera);
         }
 
         private void OnDisable()
@@ -148,9 +158,28 @@ namespace GenshintImpact2
             }
 
             Instantiate(CDInstance, weaponShootPosition.transform.position, Quaternion.identity);
+            CDInstance.GetComponent<Rigidbody>().velocity = weaponShootPosition.transform.forward * -bulletSpeed;
 
 
         }
+
+        // Health
+        public void HandleDamage(float damageTaken)
+        {
+            if (health > 0)
+            {
+                health -= damageTaken;
+                UIManager.instance.UpdateHealthBar(-damageTaken / maxHealth);
+
+                if (health <= 0)
+                {
+                    health = 0;
+                    // Death
+                }
+            }
+        }
+
+        
 
     }
 }

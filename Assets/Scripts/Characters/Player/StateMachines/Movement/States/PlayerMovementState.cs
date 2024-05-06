@@ -33,7 +33,7 @@ namespace GenshintImpact2
         //Virtual permite cambiar lo que suceda dentro de la función
         public virtual void Enter()
         {
-            Debug.Log("State: " + GetType().Name);
+            //Debug.Log("State: " + GetType().Name);
 
             AddInputActionsCallbacks();
 
@@ -60,19 +60,19 @@ namespace GenshintImpact2
 
         public virtual void OnAnimationEnterEvent()
         {
-            
+
         }
 
         public virtual void OnAnimationExitEvent()
         {
-           
+
         }
 
         public virtual void OnAnimationTransitionEvent()
         {
-           
+
         }
-        
+
         public virtual void OnTriggerEnter(Collider collider)
         {
             if (stateMachine.player.layerData.IsGroundLayer(collider.gameObject.layer))
@@ -82,7 +82,7 @@ namespace GenshintImpact2
                 return;
             }
 
-            if(stateMachine.player.layerData.IsItemLayer(collider.gameObject.layer))
+            if (stateMachine.player.layerData.IsItemLayer(collider.gameObject.layer))
             {
                 OnItemPickUp(collider);
 
@@ -100,7 +100,7 @@ namespace GenshintImpact2
                 return;
             }
         }
-    
+
 
         #endregion
 
@@ -110,13 +110,13 @@ namespace GenshintImpact2
         /// </summary>
         private void ReadMovementInput()
         {
-              stateMachine.reusableData.movementInput = stateMachine.player.input.playerActions.Movement.ReadValue<Vector2>();
+            stateMachine.reusableData.movementInput = stateMachine.player.input.playerActions.Movement.ReadValue<Vector2>();
         }
 
         private void Move()
         {
             //Significa que no nos estamos moviendo
-            if (  stateMachine.reusableData.movementInput == Vector2.zero ||  stateMachine.reusableData.movementSpeedModifier == 0f)
+            if (stateMachine.reusableData.movementInput == Vector2.zero || stateMachine.reusableData.movementSpeedModifier == 0f)
             {
                 return;
             }
@@ -274,7 +274,7 @@ namespace GenshintImpact2
         {
             float movementSpeed = movementData.baseSpeed * stateMachine.reusableData.movementSpeedModifier;
 
-            if(shouldConsiderSlopes)
+            if (shouldConsiderSlopes)
             {
                 movementSpeed *= stateMachine.reusableData.movementOnSlopesSpeedModifier;
             }
@@ -293,7 +293,7 @@ namespace GenshintImpact2
             return playerHorizontalVelocity;
         }
 
-        protected Vector3 GetPlayerVerticalVelocity() 
+        protected Vector3 GetPlayerVerticalVelocity()
         {
             return new Vector3(0f, stateMachine.player.rb.velocity.y, 0f);
         }
@@ -304,7 +304,7 @@ namespace GenshintImpact2
         /// <returns></returns>
         protected Vector3 GetMovementInputDirection()
         {
-            return new Vector3(  stateMachine.reusableData.movementInput.x, 0f,   stateMachine.reusableData.movementInput.y);
+            return new Vector3(stateMachine.reusableData.movementInput.x, 0f, stateMachine.reusableData.movementInput.y);
         }
 
         /// <summary>
@@ -400,6 +400,18 @@ namespace GenshintImpact2
 
         protected virtual void OnContactWithGroundExited(Collider collider)
         {
+        }
+
+        protected void OnPlayerDeath()
+        {
+            //Debug.Log(stateMachine.player.health);
+
+            if (stateMachine.player.health <= 0.1f)
+            {
+                stateMachine.ChangeState(stateMachine.deadState);
+
+                UIManager.instance.DiePanel();
+            }
         }
 
         protected void StartAnimation(int animationHash)

@@ -16,8 +16,8 @@ TagManager:
   - GroundCheck
   - Minimap
   - Item
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 

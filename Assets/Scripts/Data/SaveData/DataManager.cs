@@ -63,13 +63,13 @@ namespace GenshintImpact2
 
                 if (Player.instance != null)
                 {
-                    Debug.Log("load data");
+                    //Debug.Log("load data");
                     Player.instance.transform.position = gameData.playerTransform;
                     Player.instance.transform.rotation = gameData.playerRotation;
 
                     if (Player.instance.thirdPersonCam != null)
                     {
-                        Debug.Log("thirdCameraLoad");
+                        //Debug.Log("thirdCameraLoad");
                         Player.instance.thirdPersonCam.transform.position = gameData.TPCameraTransform;
                         Player.instance.thirdPersonCam.transform.rotation = gameData.TPCameraRotation;
                     }

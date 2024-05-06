@@ -39,6 +39,7 @@ namespace GenshintImpact2
         {
             input.playerActions.ToggleInventory.Enable();
             Time.timeScale = 1f;
+            Player.instance.health = 20f;
         }
     }
 }
