@@ -127,7 +127,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KillCharacter"",
+                    ""name"": ""DamageEnemy"",
                     ""type"": ""Button"",
                     ""id"": ""8a3b4467-2e61-4954-bd5d-709d08b220d8"",
                     ""expectedControlType"": ""Button"",
@@ -358,7 +358,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KillCharacter"",
+                    ""action"": ""DamageEnemy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -413,7 +413,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_ToggleInventory = m_Player.FindAction("ToggleInventory", throwIfNotFound: true);
         m_Player_TogglePauseMenu = m_Player.FindAction("TogglePauseMenu", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_KillCharacter = m_Player.FindAction("KillCharacter", throwIfNotFound: true);
+        m_Player_DamageEnemy = m_Player.FindAction("DamageEnemy", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_RestoreHealth = m_Player.FindAction("RestoreHealth", throwIfNotFound: true);
         m_Player_DecreaseHealth = m_Player.FindAction("DecreaseHealth", throwIfNotFound: true);
@@ -489,7 +489,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ToggleInventory;
     private readonly InputAction m_Player_TogglePauseMenu;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_KillCharacter;
+    private readonly InputAction m_Player_DamageEnemy;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_RestoreHealth;
     private readonly InputAction m_Player_DecreaseHealth;
@@ -508,7 +508,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @ToggleInventory => m_Wrapper.m_Player_ToggleInventory;
         public InputAction @TogglePauseMenu => m_Wrapper.m_Player_TogglePauseMenu;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @KillCharacter => m_Wrapper.m_Player_KillCharacter;
+        public InputAction @DamageEnemy => m_Wrapper.m_Player_DamageEnemy;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @RestoreHealth => m_Wrapper.m_Player_RestoreHealth;
         public InputAction @DecreaseHealth => m_Wrapper.m_Player_DecreaseHealth;
@@ -554,9 +554,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @KillCharacter.started += instance.OnKillCharacter;
-            @KillCharacter.performed += instance.OnKillCharacter;
-            @KillCharacter.canceled += instance.OnKillCharacter;
+            @DamageEnemy.started += instance.OnDamageEnemy;
+            @DamageEnemy.performed += instance.OnDamageEnemy;
+            @DamageEnemy.canceled += instance.OnDamageEnemy;
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
@@ -603,9 +603,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @KillCharacter.started -= instance.OnKillCharacter;
-            @KillCharacter.performed -= instance.OnKillCharacter;
-            @KillCharacter.canceled -= instance.OnKillCharacter;
+            @DamageEnemy.started -= instance.OnDamageEnemy;
+            @DamageEnemy.performed -= instance.OnDamageEnemy;
+            @DamageEnemy.canceled -= instance.OnDamageEnemy;
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
@@ -645,7 +645,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnToggleInventory(InputAction.CallbackContext context);
         void OnTogglePauseMenu(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnKillCharacter(InputAction.CallbackContext context);
+        void OnDamageEnemy(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnRestoreHealth(InputAction.CallbackContext context);
         void OnDecreaseHealth(InputAction.CallbackContext context);

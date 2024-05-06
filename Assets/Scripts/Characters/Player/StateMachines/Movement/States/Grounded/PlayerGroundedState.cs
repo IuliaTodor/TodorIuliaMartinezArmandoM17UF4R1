@@ -35,6 +35,7 @@ namespace GenshintImpact2
             base.PhysicsUpdate();
 
             FloatCapsule();
+            OnPlayerDeath();
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace GenshintImpact2
 
             stateMachine.player.input.playerActions.ChangeCamera.started += OnCameraToggle;
 
-            stateMachine.player.input.playerActions.KillCharacter.started += OnDie;
+            stateMachine.player.input.playerActions.DamageEnemy.started += OnEnemyDamaged;
 
             stateMachine.player.input.playerActions.Shoot.started += OnShoot;
         }
@@ -123,7 +124,7 @@ namespace GenshintImpact2
 
             stateMachine.player.input.playerActions.ChangeCamera.started -= OnCameraToggle;
 
-            stateMachine.player.input.playerActions.KillCharacter.started -= OnDie;
+            stateMachine.player.input.playerActions.DamageEnemy.started -= OnEnemyDamaged;
 
             stateMachine.player.input.playerActions.Shoot.started -= OnShoot;
         }
@@ -136,11 +137,16 @@ namespace GenshintImpact2
             }
         }
 
-        protected void OnDie(InputAction.CallbackContext context)
-        {
-            stateMachine.ChangeState(stateMachine.deadState);
+        //protected void OnDie(InputAction.CallbackContext context)
+        //{
+        //    stateMachine.ChangeState(stateMachine.deadState);
 
-            UIManager.instance.DiePanel();
+        //    UIManager.instance.DiePanel();
+        //}
+
+        protected void OnEnemyDamaged(InputAction.CallbackContext context)
+        {
+            stateMachine.player.target.GetComponent<Enemy>().HandleDamage(1);
         }
 
         protected virtual void OnJumpStarted(InputAction.CallbackContext context)
@@ -261,8 +267,6 @@ namespace GenshintImpact2
             
             stateMachine.ChangeState(stateMachine.dancingState);
         }
-        
-          
         
     }
 }

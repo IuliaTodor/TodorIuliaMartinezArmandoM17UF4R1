@@ -7,15 +7,17 @@ namespace GenshintImpact2
         public bool inAttackRange = false;
 
         public GameObject target;
-        private void OnTriggerEnter(Collider other) {
-            if (other.gameObject.tag == "Player") 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Player")
             {
                 inAttackRange = true;
                 target = other.gameObject;
             }
         }
 
-        private void OnTriggerExit(Collider other) {
+        private void OnTriggerExit(Collider other)
+        {
             if (other.gameObject.tag == "Player") inAttackRange = false;
         }
     }

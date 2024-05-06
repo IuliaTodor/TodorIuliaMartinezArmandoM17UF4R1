@@ -36,6 +36,8 @@ namespace GenshintImpact2
         [SerializeField] public float health;
         [SerializeField] public float maxHealth;
 
+        [SerializeField] public GameObject target;
+
         private void Awake()
         {
             instance = this;
@@ -55,6 +57,9 @@ namespace GenshintImpact2
 
             weaponShootPosition = GetWeapon();
 
+            health = maxHealth;
+
+            //target = GetComponent<Enemy>().gameObject;
 
         }
 
@@ -173,6 +178,8 @@ namespace GenshintImpact2
                 }
             }
         }
+
+        
 
     }
 }

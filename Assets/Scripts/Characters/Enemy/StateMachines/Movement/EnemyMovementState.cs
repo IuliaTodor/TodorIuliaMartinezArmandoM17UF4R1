@@ -87,9 +87,9 @@ namespace GenshintImpact2
 
         public virtual void OnEnemyHealth()
         {
-            if(stateMachine.enemy.health < stateMachine.enemy.maxHealth/2)
+            if(stateMachine.enemy.health <= stateMachine.enemy.maxHealth/2)
             {
-                Debug.Log("no me encuentro bien señor stark");
+                stateMachine.ChangeState(stateMachine.patrolState);
             }
         }
 

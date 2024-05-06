@@ -11,7 +11,6 @@ namespace GenshintImpact2
         void Start()
         {
             startTime = Time.time;
-            //transform.eulerAngles = new Vector3(0, 0, 270);
         }
         void Update()
         {

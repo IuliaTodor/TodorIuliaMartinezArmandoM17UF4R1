@@ -106,7 +106,7 @@ namespace GenshintImpact2
                 if (health <= 0)
                 {
                     health = 0;
-                    // Death
+                    
                 }
             }
         }
@@ -122,6 +122,11 @@ namespace GenshintImpact2
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(new Vector3(centrePoint.position.x, centrePoint.position.y, centrePoint.position.z), 10f);
+        }
+
+        public void DestroyEnemy()
+        {
+            Destroy(gameObject);
         }
 
     }

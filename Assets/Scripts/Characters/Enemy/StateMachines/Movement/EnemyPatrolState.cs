@@ -92,6 +92,11 @@ namespace GenshintImpact2
         {
             base.OnSetDestination();
 
+            if(stateMachine.enemy.health <= stateMachine.enemy.maxHealth/2)
+            {
+                return;
+            }
+
             if (stateMachine.enemy.fieldOfView.IsTarget)
             {
                 OnFieldViewEnter();
