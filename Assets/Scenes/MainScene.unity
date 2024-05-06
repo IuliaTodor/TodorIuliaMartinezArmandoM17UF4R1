@@ -1690,8 +1690,8 @@ Transform:
   m_GameObject: {fileID: 617306910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.29, z: 0.731}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.654, z: 1.47}
+  m_LocalScale: {x: 0.14, y: 0.12, z: 2.44}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1751092192}
@@ -8948,7 +8948,7 @@ GameObject:
   - component: {fileID: 1751092198}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11295,6 +11295,18 @@ PrefabInstance:
     - target: {fileID: 957309257254620947, guid: 2ec1d0f805631ca4f8e4683e5d51c8d6, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.00003664195
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046260693392398524, guid: 2ec1d0f805631ca4f8e4683e5d51c8d6, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046260693392398524, guid: 2ec1d0f805631ca4f8e4683e5d51c8d6, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1751092190}
+    - target: {fileID: 1046260693392398524, guid: 2ec1d0f805631ca4f8e4683e5d51c8d6, type: 3}
+      propertyPath: maxHealth
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1046260693392398524, guid: 2ec1d0f805631ca4f8e4683e5d51c8d6, type: 3}
       propertyPath: CDInstance

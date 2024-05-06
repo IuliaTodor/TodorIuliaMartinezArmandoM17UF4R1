@@ -79,5 +79,19 @@ namespace GenshintImpact2
         {
             
         }
+
+        public virtual void OnHitboxEnter()
+        {
+           
+        }
+
+        public virtual void OnEnemyHealth()
+        {
+            if(stateMachine.enemy.health <= stateMachine.enemy.maxHealth/2)
+            {
+                stateMachine.ChangeState(stateMachine.patrolState);
+            }
+        }
+
     }
 }

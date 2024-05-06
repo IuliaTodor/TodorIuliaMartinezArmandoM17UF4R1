@@ -26,7 +26,7 @@ namespace GenshintImpact2
         {
             base.Update();
 
-            Debug.Log("remainingDistance: " + stateMachine.enemy.agent.remainingDistance);
+            //Debug.Log("remainingDistance: " + stateMachine.enemy.agent.remainingDistance);
 
             //Si el enemigo ha alcanzado el destino genera un punto random en el rango y dentro de centrePoint
 
@@ -91,6 +91,11 @@ namespace GenshintImpact2
         public override void OnSetDestination()
         {
             base.OnSetDestination();
+
+            if(stateMachine.enemy.health <= stateMachine.enemy.maxHealth/2)
+            {
+                return;
+            }
 
             if (stateMachine.enemy.fieldOfView.IsTarget)
             {

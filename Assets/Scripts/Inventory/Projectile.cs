@@ -11,7 +11,6 @@ namespace GenshintImpact2
         void Start()
         {
             startTime = Time.time;
-            //transform.eulerAngles = new Vector3(0, 0, 270);
         }
         void Update()
         {
@@ -20,5 +19,14 @@ namespace GenshintImpact2
                 Destroy(gameObject);
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                collision.gameObject.GetComponent<Enemy>().HandleDamage(1);
+            }
+        }
+
     }
 }

@@ -21,7 +21,7 @@ namespace GenshintImpact2
 
         public override void Enter()
         {
-            base.Enter();            
+            base.Enter();
         }
 
         public override void Update()
@@ -35,16 +35,20 @@ namespace GenshintImpact2
 
             stateMachine.enemy.destination = stateMachine.enemy.target.transform.position;
 
-            //Debug.Log("Target es: " + stateMachine.enemy.target.transform.position);
-            //Debug.Log("Destination es: " + stateMachine.enemy.target.transform.position);
-
             stateMachine.enemy.agent.stoppingDistance = stoppingDistance;
             stateMachine.enemy.agent.SetDestination(stateMachine.enemy.destination);
+
+            OnHitboxEnter();
         }
 
         public override void OnSetDestination()
         {
             base.OnSetDestination();
+
+            if (stateMachine.enemy.target.GetComponent<Player>().health <= 0.1f)
+            {
+                OnFieldViewExit();
+            }
 
             if (!stateMachine.enemy.fieldOfView.IsTarget)
             {
@@ -57,14 +61,20 @@ namespace GenshintImpact2
             base.OnFieldViewExit();
         }
 
-        //public override void Enter()
-        //{
-        //    base.Enter();
-        //}
+        public override void OnHitboxEnter()
+        {
+            base.OnHitboxEnter();
 
-        //public override void Update()
-        //{
-        //    stateMachine.enemy.agent.destination = stateMachine.enemy.movePosition.position;
-        //}
+            if (stateMachine.enemy.hitBox.inAttackRange)
+            {
+                stateMachine.enemy.target.GetComponent<Player>().HandleDamage(0.05f);
+                if (!stateMachine.enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) stateMachine.enemy.animator.SetTrigger("Attack");
+            }
+        }
+
+        public override void OnEnemyHealth()
+        {
+            base.OnEnemyHealth();
+        }
     }
 }

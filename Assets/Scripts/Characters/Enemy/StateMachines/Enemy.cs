@@ -64,14 +64,7 @@ namespace GenshintImpact2
             enemyStateMachine.Update();
 
             fieldOfView.SetOrigin(transform.position);
-            fieldOfView.SetDirection(transform.forward);
-
-            if (hitBox.inAttackRange) {
-                enemyStateMachine.ChangeState(enemyStateMachine.attackState);
-                // Mover a la enemyStateMachine
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) animator.SetTrigger("Attack");
-
-            }
+            fieldOfView.SetDirection(transform.forward); 
         }
         private void FixedUpdate()
         {
@@ -113,7 +106,7 @@ namespace GenshintImpact2
                 if (health <= 0)
                 {
                     health = 0;
-                    // Death
+                    
                 }
             }
         }
@@ -129,6 +122,11 @@ namespace GenshintImpact2
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(new Vector3(centrePoint.position.x, centrePoint.position.y, centrePoint.position.z), 10f);
+        }
+
+        public void DestroyEnemy()
+        {
+            Destroy(gameObject);
         }
 
     }
