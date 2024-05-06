@@ -64,14 +64,7 @@ namespace GenshintImpact2
             enemyStateMachine.Update();
 
             fieldOfView.SetOrigin(transform.position);
-            fieldOfView.SetDirection(transform.forward);
-
-            if (hitBox.inAttackRange) {
-                enemyStateMachine.ChangeState(enemyStateMachine.attackState);
-                // Mover a la enemyStateMachine
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) animator.SetTrigger("Attack");
-
-            }
+            fieldOfView.SetDirection(transform.forward); 
         }
         private void FixedUpdate()
         {

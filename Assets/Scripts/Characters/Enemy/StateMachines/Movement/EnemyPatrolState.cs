@@ -26,7 +26,7 @@ namespace GenshintImpact2
         {
             base.Update();
 
-            Debug.Log("remainingDistance: " + stateMachine.enemy.agent.remainingDistance);
+            //Debug.Log("remainingDistance: " + stateMachine.enemy.agent.remainingDistance);
 
             //Si el enemigo ha alcanzado el destino genera un punto random en el rango y dentro de centrePoint
 

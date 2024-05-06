@@ -20,5 +20,14 @@ namespace GenshintImpact2
                 Destroy(gameObject);
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                collision.gameObject.GetComponent<Enemy>().HandleDamage(1);
+            }
+        }
+
     }
 }

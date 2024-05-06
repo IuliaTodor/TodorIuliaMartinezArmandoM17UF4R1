@@ -40,6 +40,10 @@ namespace GenshintImpact2
 
             stateMachine.enemy.agent.stoppingDistance = stoppingDistance;
             stateMachine.enemy.agent.SetDestination(stateMachine.enemy.destination);
+
+            OnHitboxEnter();
+
+            OnEnemyHealth();
         }
 
         public override void OnSetDestination()
@@ -55,6 +59,25 @@ namespace GenshintImpact2
         public override void OnFieldViewExit()
         {
             base.OnFieldViewExit();
+        }
+
+        public override void OnHitboxEnter()
+        {
+            base.OnHitboxEnter();
+
+            if (stateMachine.enemy.hitBox.inAttackRange)
+            {
+                stateMachine.enemy.target.GetComponent<Player>().HandleDamage(0.05f);
+                Debug.Log(stateMachine.enemy.target.GetComponent<Player>().health);
+                //static.ChangeState(enemyStateMachine.attackState);
+                // Mover a la enemyStateMachine
+                //if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) animator.SetTrigger("Attack");
+            }
+        }
+
+        public override void OnEnemyHealth()
+        {
+            base.OnEnemyHealth();
         }
 
         //public override void Enter()

@@ -23,7 +23,7 @@ namespace GenshintImpact2
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-           animator.gameObject.transform.parent.GetComponent<Enemy>().HandleAttack();
+           //animator.gameObject.transform.parent.GetComponent<Enemy>().HandleAttack();
         }
 
         // OnStateMove is called right after Animator.OnAnimatorMove()
